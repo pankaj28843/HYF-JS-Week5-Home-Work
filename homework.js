@@ -38,8 +38,16 @@ function fetchRepos() {
 
         for (const repo of repositories) {
             const li = document.createElement('li');
-            li.innerHTML = repo.name;
             repositoriesElement.appendChild(li);
+
+            // const repoUrl = 'https://api.github.com/repos/HackYourFuture/' + repo.name;
+            // li.innerHTML = '<a href="' + repoUrl + '" target="_blank">' + repoUrl + '</a>';
+
+
+            li.innerHTML = '<a href="' + repo.url + '" target="_blank">' + repo.url + '</a>';
+
+
+
         }
     });
 }
