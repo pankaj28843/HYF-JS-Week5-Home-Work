@@ -27,7 +27,7 @@ function fetchData(url, callbackFunction) {
     req.send();
 }
 
-function fetchRepos(){
+function fetchRepos() {
     const HYFReposURL = 'https://api.github.com/orgs/HackYourFuture/repos';
 
     const repositoriesElement = document.querySelector('#repositories');
@@ -36,7 +36,7 @@ function fetchRepos(){
     fetchData(HYFReposURL, function (repositories) {
         console.log('All repositories:', repositories);
 
-        for(const repo of repositories){
+        for (const repo of repositories) {
             const li = document.createElement('li');
             li.innerHTML = repo.name;
             repositoriesElement.appendChild(li);
@@ -44,14 +44,11 @@ function fetchRepos(){
     });
 }
 
-
-fetchRepos();
-
 const myButton = document.querySelector('#myButton');
 
 const myButtonClickHandler = function () {
-
     console.log('you clicked me!');
+    fetchRepos();
 };
 
 myButton.addEventListener('click', myButtonClickHandler);
