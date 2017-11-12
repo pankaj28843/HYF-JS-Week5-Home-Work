@@ -27,14 +27,30 @@ function fetchData(url, callbackFunction) {
     req.send();
 }
 
+function fetchRepos(){
+    const HYFReposURL = 'https://api.github.com/orgs/HackYourFuture/repos';
 
-fetchData('https://api.github.com/orgs/HackYourFuture/repos', function(data){
-    console.log(data);
-});
+    const repositoriesElement = document.querySelector('#repositories');
+    repositoriesElement.innerHTML = '';
+
+    fetchData(HYFReposURL, function (repositories) {
+        console.log('All repositories:', repositories);
+
+        for(const repo of repositories){
+            const li = document.createElement('li');
+            li.innerHTML = repo.name;
+            repositoriesElement.appendChild(li);
+        }
+    });
+}
+
+
+fetchRepos();
 
 const myButton = document.querySelector('#myButton');
 
 const myButtonClickHandler = function () {
+
     console.log('you clicked me!');
 };
 
